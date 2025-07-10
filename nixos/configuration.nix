@@ -10,20 +10,20 @@
       ./hardware-configuration.nix
 
       #Imports da Home Manager module.
-      <home-manager/nixos>
+      #<home-manager/nixos>
     ];
 
   
   #Home Manager user confg
-  home-manager.users.gray = {
+  #home-manager.users.gray = {
 
     #Sets the current NixOS channel
-    home.stateVersion = "25.05";
+   # home.stateVersion = "25.05";
 
     #Imports config sturf from the home.nix file
-    imports = [./home.nix];
+    #imports = [./home.nix];
 
-  };
+  #};
 
   #labs
   #networking.extraHosts = 
@@ -79,7 +79,7 @@
   #THIS WORKED
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;  
+ # nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;  
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
@@ -175,7 +175,7 @@
   #	};  
   
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+ # nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -195,7 +195,9 @@
 
   # Software libraries
   jdk17
+  
 
+  smartmontools
   # Apps
   git
   github-desktop
@@ -299,7 +301,7 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 
 }
 
