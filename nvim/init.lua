@@ -1,19 +1,19 @@
 -- Global Neovim Settings
-vim.opt.nu = true              -- Line numbers
-vim.opt.relativenumber = true  -- Relative line numbers
-vim.opt.tabstop = 2            -- Number of spaces a tab counts for
-vim.opt.shiftwidth = 2         -- Size of an indent
-vim.opt.expandtab = true       -- Use spaces instead of tabs
-vim.opt.smartindent = true     -- Smart indentation
-vim.opt.hlsearch = true        -- Highlight search results
-vim.opt.incsearch = true       -- Incremental search
-vim.opt.undofile = true        -- Persistent undo
-vim.opt.updatetime = 300       -- Faster completion (ms)
-vim.opt.timeoutlen = 500       -- Time to wait for mapped sequence to complete
-vim.opt.termguicolors = true   -- Enable true colors
-vim.opt.scrolloff = 8          -- Lines of context above/below cursor
-vim.opt.isfname:append("@-@")  -- Allow '-' in filenames
-vim.opt.signcolumn = "yes"     -- Always show sign column for LSP/diagnostics
+vim.opt.nu = true                 -- Line numbers
+vim.opt.relativenumber = true     -- Relative line numbers
+vim.opt.tabstop = 2               -- Number of spaces a tab counts for
+vim.opt.shiftwidth = 2            -- Size of an indent
+vim.opt.expandtab = true          -- Use spaces instead of tabs
+vim.opt.smartindent = true        -- Smart indentation
+vim.opt.hlsearch = true           -- Highlight search results
+vim.opt.incsearch = true          -- Incremental search
+vim.opt.undofile = true           -- Persistent undo
+vim.opt.updatetime = 300          -- Faster completion (ms)
+vim.opt.timeoutlen = 500          -- Time to wait for mapped sequence to complete
+vim.opt.termguicolors = true      -- Enable true colors
+vim.opt.scrolloff = 8             -- Lines of context above/below cursor
+vim.opt.isfname:append("@-@")     -- Allow '-' in filenames
+vim.opt.signcolumn = "yes"        -- Always show sign column for LSP/diagnostics
 vim.opt.clipboard = "unnamedplus" -- Sync with system clipboard
 
 -- Filetype specific settings (example)
@@ -163,7 +163,7 @@ end
 
 -- Setup individual LSP servers
 -- You'll need to have the LSP server installed (via home.packages)
-lspconfig.tsserver.setup({ -- TypeScript/JavaScript
+lspconfig.ts_ls.setup({ -- TypeScript/JavaScript
   on_attach = on_attach,
   capabilities = cmp.nvim_lsp.default_capabilities(),
 })
