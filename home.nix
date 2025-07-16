@@ -57,7 +57,7 @@
 	#LSP support
 	nvim-lspconfig #Config for different LSP servers
 	nvim-cmp #Autocompletion source
-	cmp-nvim_lsp #LSP source for nvim-cmp
+	cmp-nvim-lsp #LSP source for nvim-cmp
 	cmp-buffer
 	cmp-path
 	luasnip #Lua snippet engine
