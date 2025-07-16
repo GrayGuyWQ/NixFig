@@ -104,7 +104,7 @@ require("lualine").setup {
 -- nvim-cmp (autocompletion)
 local cmp = require("cmp")
 local luasnip = require("luasnip")
-local cmp_nvim_lsp = requre("cmp_nvim_lsp")
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 cmp.setup({
   snippet = {
