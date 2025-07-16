@@ -28,6 +28,8 @@
 	};
 	username = "gray";
 
+	lib = nixpkgs.lib;
+
 
     in {
 
@@ -39,8 +41,12 @@
 
 			home-manager.nixosModules.home-manager {
 				home-manager.useUserPackages = true;
-
 				home-manager.users.${username} = import ./home.nix;
+
+				  #inherit lib;
+				  #inherit pkgs;
+			          
+				
 			}
 
 
