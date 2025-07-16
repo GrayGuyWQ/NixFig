@@ -16,7 +16,7 @@
     lua-language-server #Lua
     marksman #Markdown
     nodePackages.typescript-language-server #TypeScript/JavaScript
-    python312Packages.pyright #Python
+    pyright #Python
     rust-analyzer #Rust
     gopls #Go
     clang-tools #C/C++ (Includes clangd)
@@ -66,8 +66,8 @@
       lua << EOF
         -- 'init.lua' content
 	${builtins.readFile ./nvim/init.lua}
-      EOF
+  EOF
     '';
 
-    };
+  };
 }
