@@ -166,7 +166,7 @@ end
 -- You'll need to have the LSP server installed (via home.packages)
 lspconfig.ts_ls.setup({ -- TypeScript/JavaScript
   on_attach = on_attach,
-  capabilities = cmp.nvim_lsp.default_capabilities(),
+  capabilities = cmp_nvim_lsp.default_capabilities(),
 })
 
 lspconfig.pyright.setup({ -- Python
