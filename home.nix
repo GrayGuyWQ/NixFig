@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 { 
   home.username = "gray";
@@ -64,9 +64,9 @@
 	];
     extraConfig = ''
       lua << EOF
-        -- 'init.lua' content
-	${builtins.readFile ./nvim/init.lua}
-  EOF
+      -- 'init.lua' content
+${lib.strings.fileContents ./nvim/init.lua}
+EOF
     '';
 
   };
