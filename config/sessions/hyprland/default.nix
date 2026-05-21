@@ -13,7 +13,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = ''
-      source = /etc/nixos/config/sessions/hyprland/hyprland.conf
+      source = /home/gray/NixFig/config/sessions/hyprland/hyprland.conf
     '';
   };
 
@@ -56,13 +56,13 @@
   home.sessionVariables.NIXOS_OZONE_WL = "1";
 
   home.file.".config/hypr/scripts".source =
-    config.lib.file.mkOutOfStoreSymlink "~/NixFix/config/sessions/hyprland/scripts";
+    config.lib.file.mkOutOfStoreSymlink "/home/gray/NixFig/config/sessions/hyprland/scripts";
   home.activation.copyHyprConfig = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ${pkgs.rsync}/bin/rsync -a --update ~/NixFix/config/sessions/hyprland/config/ $HOME/.config/hypr/config/
+    ${pkgs.rsync}/bin/rsync -a --update /home/gray/NixFig/config/sessions/hyprland/config/ $HOME/.config/hypr/config/
     chmod -R u+w $HOME/.config/hypr/config
   '';
   home.activation.copyHyprTemplates = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ${pkgs.rsync}/bin/rsync -a --update ~/NixFig/config/sessions/hyprland/templates/ $HOME/.config/hypr/templates/
+    ${pkgs.rsync}/bin/rsync -a --update /home/gray/NixFig/config/sessions/hyprland/templates/ $HOME/.config/hypr/templates/
     chmod -R u+w $HOME/.config/hypr/templates
   '';
 }

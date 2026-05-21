@@ -18,23 +18,22 @@
       gitavail = "ssh-add $HOME/Documents/Важное/recovery_keys/GitHub/github_remote_keys/key";
       update = "sudo nixos-rebuild switch";
       stop = "shutdown now";
-      edconf = "sudo -E nvim /etc/nixos/configuration.nix";
-      out = "loginctl terminate-user ilyamiro";  
-    };
-    
-    
-    oh-my-zsh = {
-        enable = true;
-        plugins = [
-          "git"                
-        ];
-        theme = "robbyrussell";
-      };
+      edconf = "sudo -E nvim /home/gray/NixFig/configuration.nix";
+      out = "loginctl terminate-user ilyamiro";
     };
 
-  home.sessionVariables = {
-      hypr = "/etc/nixos/config/sessions/hyprland/";  
-      programs = "/etc/nixos/config/programs";
+    oh-my-zsh = {
+      enable = true;
+      plugins = [
+        "git"
+      ];
+      theme = "robbyrussell";
     };
+  };
+
+  home.sessionVariables = {
+    hypr = "~/NixFig/config/sessions/hyprland/";
+    programs = "~/NixFig/config/programs";
+  };
 
 }
