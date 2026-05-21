@@ -1,0 +1,49 @@
+# ~/nix-config/flakes/rust-dev/flake.nix
+{
+  description = "Rust development environment module";
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    flake-utils.url = "github:numtide/flake-utils"; # For cross-platform devShells (optional)
+  };
+
+  outputs = { self, nixpkgs, rust-overlay, flake-utils, ... }:
+    let
+      # Define a set of overlays to apply
+      # This makes the Rust toolchains available through 'pkgs' in this flake's outputs
+      overlays = [
+        rust-overlay.overlays.default
+      ];
+    in
+    {
+      # Option 1: Provide a NixOS module
+      # This is useful if you want to apply Rust configs system-wide or via Home Manager
+      nixosModules.default = { config, pkgs, ... }: {
+        # Create a pkgs set with the overlays applied for this module's scope
+        # This allows you to select rust-bin packages directly within this module.
+        _rustPkgs = import pkgs.path {
+          inherit (pkgs) system;
+          inherit overlays; # Pass the overlays
+        };
+
+        # Example: Home Manager user packages for Rust
+        # This assumes your Home Manager is enabled and imports this module.
+        # You'd define your user specific packages here, accessible in home.nix
+        home.packages = [
+          config._rustPkgs.rust-bin.stable.latest.default
+          config._rustPkgs.rust-analyzer-unwrapped
+          # Add any other Rust-related tools or cargo subcommands you need
+        ];
+
+        home.sessionVariables = {
+          RUST_SRC_PATH = "${config._rustPkgs.rust-bin.stable.latest.default}/lib/rustlib/src/rust/library";
+        };
+
+        # You can add other Rust-related configs here, e.g., for system-wide components
+        # programs.zsh.initExtra = ''
+        #   export RUST_SRC_PATH="${config._rustPkgs.rust-bin.stable.latest.default}/lib/rustlib/src/rust/library"
+        # '';
+      };
+  };
+}
